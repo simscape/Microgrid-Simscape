@@ -1,4 +1,4 @@
-# Microgrid Design with Simscape;
+# Microgrid Design with Simscape
 The International Council on Large Electric Systems (CIGRE) defines microgrids as 
 ‘electricity distribution systems containing loads and distributed energy resources, 
 (such as distributed generators, storage devices, or controllable loads) that can be
