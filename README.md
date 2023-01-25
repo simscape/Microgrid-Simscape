@@ -27,10 +27,10 @@ In this example, these indices are improved through reduction in diesel
 conformation of standards for power quality.
 
 ## Setup
-* Clone and add the repository to the MATLAB path.
+* Clone and add the repository to the MATLAB&reg; path.
 * Open MicrogridDesignWithSimscape.prj.
 * In the toolstrip, use the project shortcut buttons to open the example.
-* This example requires MATLAB&reg; release R2022b or newer.
+* This example requires MATLAB R2022b or later.
 
 Copyright 2022-2023 The MathWorks, Inc.
 
