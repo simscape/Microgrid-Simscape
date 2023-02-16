@@ -20,6 +20,8 @@ reliability, renewable power usage, and reduction in diesel consumption.
  The key indices for economic benefits for the remote microgrid include life
  cycle cost, net revenue, payback period, and internal rate of return. 
 
+![](ScriptData/remote microgrid.png)
+
 In this example, these indices are improved through reduction in diesel
  usage, maximum usage of renewable energy, and operation of the BESS.
  This example uses various standards for covering, planning, designing,
