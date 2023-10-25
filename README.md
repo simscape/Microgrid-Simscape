@@ -28,11 +28,26 @@ In this example, these indices are improved through reduction in diesel
  controlling, and testing. The control performance evaluation includes 
 conformation of standards for power quality.
 
+
+The second example is about industrial microgrid. In an industrial microgrid, 
+the planning objectives are ensuring power reliability, minimize downtime, 
+faster system reconfiguration during fault and cost optimization. Electrical 
+design covers the voltage selection, network structure, grounding etc. while 
+the automation design ensures system protection, monitoring, communication etc. 
+In this example, two main grids connect through two primary substations. Each 
+substation has one BESS units and one microgrid controller. The industrial grid
+ operates as two microgrids connected through a normally open switch. 
+
+This figure shows various aspects from different standards considered in this workflow. 
+The microgrid standards and industrial process standard are mapped at different control levels.
+
+![](ScriptData/IndustrialMicrogrid.png)
+
 ## Setup
 * Clone and add the repository to the MATLAB&reg; path.
 * Open MicrogridDesignWithSimscape.prj.
 * In the toolstrip, use the project shortcut buttons to open the example.
-* This example requires MATLAB R2022b or later.
+* This example requires MATLAB R2023a or later.
 
 Copyright 2022-2023 The MathWorks, Inc.
 
