@@ -30,11 +30,11 @@ coverageReport = matlab.unittest.plugins.codecoverage.CoverageReport( ...
   MainFile = "Industrial Microgrid Coverage" + relStr + ".html" );
 
 plugin = matlab.unittest.plugins.CodeCoveragePlugin.forFile( ...
-  [fullfile(topFolder, "ScriptData", "IndustrialMicrogridDesign.mlx")
-  fullfile(topFolder, "ScriptData", "IndustrialMicrogridInputData.mlx")
-  fullfile(topFolder, "ScriptData", "IndustrialMicrogridDieselCost.m")
-  fullfile(topFolder, "ScriptData", "IndustrialMicrogridTHDLoad.m")
-  fullfile(topFolder, "ScriptData", "IndustrialMicrogridLoss.m")],...
+  [fullfile(topFolder, "ScriptData","Industrial Microgrid", "IndustrialMicrogridDesign.mlx")
+  fullfile(topFolder, "ScriptData", "Industrial Microgrid", "IndustrialMicrogridInputData.mlx")
+  fullfile(topFolder, "ScriptData", "Industrial Microgrid", "IndustrialMicrogridDieselCost.m")
+  fullfile(topFolder, "ScriptData", "Industrial Microgrid", "IndustrialMicrogridTHDLoad.m")
+  fullfile(topFolder, "ScriptData", "Industrial Microgrid", "IndustrialMicrogridLoss.m")],...
   Producing = coverageReport );
 
 addPlugin(runner, plugin)

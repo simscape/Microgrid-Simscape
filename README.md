@@ -4,6 +4,11 @@ The International Council on Large Electric Systems (CIGRE) defines microgrids a
 (such as distributed generators, storage devices, or controllable loads) that can be
  operated in a controlled, coordinated way either while connected to the main power 
 network or while islanded’.
+
+[![View Microgrid Design with Simscape on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/123865-microgrid-design-with-simscape)
+
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=simscape/Microgrid-Simscape)
+
 There are different types of microgrid applications such as residential microgrids, 
 remote microgrids, industrial microgrids, and many more. This example shows the 
 operation of a remote microgrid with diesel generator, battery energy storage 
@@ -20,7 +25,7 @@ reliability, renewable power usage, and reduction in diesel consumption.
  The key indices for economic benefits for the remote microgrid include life
  cycle cost, net revenue, payback period, and internal rate of return. 
 
-![](ScriptData/remotemicrogrid.png)
+![](Images/remotemicrogrid.png)
 
 In this example, these indices are improved through reduction in diesel
  usage, maximum usage of renewable energy, and operation of the BESS.
@@ -41,7 +46,7 @@ substation has one BESS units and one microgrid controller. The industrial grid
 This figure shows various aspects from different standards considered in this workflow. 
 The microgrid standards and industrial process standard are mapped at different control levels.
 
-![](ScriptData/IndustrialMicrogrid.png)
+![](Images/IndustrialMicrogrid.png)
 
 ## Setup
 * Clone and add the repository to the MATLAB&reg; path.
