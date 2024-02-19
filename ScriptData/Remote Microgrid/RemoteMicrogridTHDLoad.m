@@ -15,24 +15,24 @@ load('powerLoss4_RemoteMicrogrid.mat');
 % 
 logsout_PCCTHD1 = mean(logsout1.get('THDPCCVoltage').Values.Data);
 logsout_LoadTHD1 =mean(logsout1.get('THDLoadVoltage').Values.Data);
-logsout_MinLoadVoltage1 =sqrt(2)* min(min(logsout1.get('MinLoadVoltage').Values.Data));
-logsout_MaxLoadVoltage1 =sqrt(2)*max(max(logsout1.get('MaxLoadVoltage').Values.Data));
+logsout_MinLoadVoltage1 =1*min(min(logsout1.get('MinLoadVoltage').Values.Data));
+logsout_MaxLoadVoltage1 =1*max(max(logsout1.get('MaxLoadVoltage').Values.Data));
 % 
 logsout_PCCTHD2 = mean(logsout2.get('THDPCCVoltage').Values.Data);
 logsout_LoadTHD2 =mean(logsout2.get('THDLoadVoltage').Values.Data);
-logsout_MinLoadVoltage2 = sqrt(2)*min(min(logsout2.get('MinLoadVoltage').Values.Data));
-logsout_MaxLoadVoltage2 =sqrt(2)*max(max(logsout2.get('MaxLoadVoltage').Values.Data));
+logsout_MinLoadVoltage2 = 1*min(min(logsout2.get('MinLoadVoltage').Values.Data));
+logsout_MaxLoadVoltage2 =1*max(max(logsout2.get('MaxLoadVoltage').Values.Data));
 
 
 logsout_PCCTHD3 = mean(logsout3.get('THDPCCVoltage').Values.Data);
 logsout_LoadTHD3 =mean(logsout3.get('THDLoadVoltage').Values.Data);
-logsout_MinLoadVoltage3 = sqrt(2)*min(min(logsout3.get('MinLoadVoltage').Values.Data));
-logsout_MaxLoadVoltage3 =sqrt(2)*max(max(logsout3.get('MaxLoadVoltage').Values.Data));
+logsout_MinLoadVoltage3 = 1*min(min(logsout3.get('MinLoadVoltage').Values.Data));
+logsout_MaxLoadVoltage3 =1*max(max(logsout3.get('MaxLoadVoltage').Values.Data));
 
 logsout_PCCTHD4 = mean(logsout4.get('THDPCCVoltage').Values.Data);
 logsout_LoadTHD4 =mean(logsout4.get('THDLoadVoltage').Values.Data);
-logsout_MinLoadVoltage4 = sqrt(2)*min(min(logsout4.get('MinLoadVoltage').Values.Data));
-logsout_MaxLoadVoltage4 =sqrt(2)*max(max(logsout4.get('MaxLoadVoltage').Values.Data));
+logsout_MinLoadVoltage4 = 1*min(min(logsout4.get('MinLoadVoltage').Values.Data));
+logsout_MaxLoadVoltage4 =1*max(max(logsout4.get('MaxLoadVoltage').Values.Data));
 
 figure ;
 subplot (2,1,1)
@@ -55,7 +55,7 @@ xticklabels(xticks);
 subplot (2,1,2)
 
 bar([logsout_MaxLoadVoltage1-1,logsout_MaxLoadVoltage2-1,logsout_MaxLoadVoltage3-1,logsout_MaxLoadVoltage4-1;...
-    logsout_MinLoadVoltage1(1,1,1)-1,logsout_MinLoadVoltage2-1,logsout_MinLoadVoltage2-1,logsout_MinLoadVoltage4-1;])
+    logsout_MinLoadVoltage1(1,1,1)-1,logsout_MinLoadVoltage2-1,logsout_MinLoadVoltage3-1,logsout_MinLoadVoltage4-1;])
 xlim=get(gca,'xlim');
 hold on
 plot(xlim,[Microgrid.LoadVoltageDeviationLimit Microgrid.LoadVoltageDeviationLimit],'LineWidth',1,'Color','g','LineStyle','-')

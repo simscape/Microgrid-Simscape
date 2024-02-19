@@ -1,4 +1,4 @@
-function remoteMicrogridPlotPQ(logsout)
+function remoteMicrogridPlotPQ(logsout,powerPlotStart,powerPlotStop)
 % Function to plot simulation results from remote_microgrid
 % Plot Description:
 %
@@ -35,7 +35,7 @@ hold on
 plot(logsout_PLoadF2KW.Values.Time, logsout_PLoadF2KW.Values.Data, 'LineWidth', 1)
 
 grid on
-axis([2.5 8 -70 300])
+axis([powerPlotStart powerPlotStop -70 300])
 title('Active Power ')
 ylabel('Active Power (kW)')
 xlabel('Time (s)')
@@ -51,7 +51,7 @@ plot(logsout_QLoadKVAR.Values.Time, logsout_QLoadKVAR.Values.Data, 'LineWidth', 
 hold on
 plot(logsout_QLoadF2KVAR.Values.Time, logsout_QLoadF2KVAR.Values.Data, 'LineWidth', 1)
 grid on
-axis([2.5 8 -50 100])
+axis([powerPlotStart powerPlotStop -50 100])
 title('Reactive Power ')
 ylabel('Reactive Power (KVAr)')
 xlabel('Time (s)')

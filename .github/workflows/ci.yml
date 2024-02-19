@@ -36,8 +36,24 @@ on:
     - cron:  '55/61 20/25 1/6 * *' # schedule a weekly-ish build
 
 jobs:
+    job-Remote-Microgrid-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
 
-  job-check-project:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Setup MATLAB
+        uses: matlab-actions/setup-matlab@v1
+        with:
+          release: R2023a
+
+      - name: Run tests
+        uses: matlab-actions/run-command@v1
+        with:
+          command: openProject(pwd); testrunnerRemoteMicrogrid;
+ 
+  job-Industrial-Microgrid-unit-tests:
     runs-on: ubuntu-latest
     steps:
 

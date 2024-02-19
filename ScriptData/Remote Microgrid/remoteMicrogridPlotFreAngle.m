@@ -17,6 +17,7 @@ logsout_islanding = logsout.get('Islanding');
 logsout_resynchcommand = logsout.get('ResynchCommand');
 logsout_resynchronization = logsout.get('Resynchronization');
 logsout_brkstatus = logsout.get('BRKStatus');
+logsout_fault = logsout.get('Fault');
 logsout_gridfre = logsout.get('GridFre');
 logsout_islandfre = logsout.get('IslandFre');
 logsout_gridangle = logsout.get('Gridangle');
@@ -55,6 +56,17 @@ grid on
 axis([2 8 -0.1 2.5])
 title(' Resynch Command and BRK Status')
 legend({'Resynch Command', 'Resynchronization', 'BRK Status'},'NumColumns',3);
+
+ case 5
+
+plot(logsout_fault.Values.Time, logsout_fault.Values.Data, 'LineWidth', 1)
+grid on
+hold on
+plot(logsout_brkstatus.Values.Time, logsout_brkstatus.Values.Data, 'LineWidth', 1)
+grid on
+axis([2 8 -0.1 2.5])
+title(' Fault and BRK Status')
+legend({'Fault', 'BRK Status'},'NumColumns',2);
 end
 
 flag=sum(logsout_gridfre.Values.Data>60+frequencyLimit*60)+sum(logsout_gridfre.Values.Data<60-frequencyLimit*60)+...

@@ -1,4 +1,4 @@
-function remoteMicrogridPlotLoadVIRMS(logsout,caseNum)
+function remoteMicrogridPlotLoadVIRMS(logsout,tEvent,tStart,tStop)
 % Function to plot simulation results from remote_microgrid
 % Plot Description:
 %
@@ -10,22 +10,6 @@ function remoteMicrogridPlotLoadVIRMS(logsout,caseNum)
 h2a_remote_microgrid = figure('Name', 'h2a_remote_microgrid');
 figure(h2a_remote_microgrid)
 clf(h2a_remote_microgrid)
-
-% selecting time axis for the plot
-switch caseNum
-    case 1
-        tStart = 5.9;
-        tStop = 6.1;
-    case 2
-        tStart = 5.9;
-        tStop = 6.1;
-    case 3
-        tStart = 7.2;
-        tStop = 7.4;
-    case 4
-        tStart = 7.4;
-        tStop = 7.6;
-end
 
 % Plot remote microgrid
 % Get simulation results
@@ -43,7 +27,7 @@ VoltageLV=squeeze(logsout_LoadF2VRMS.Values.Data);
 plot(logsout_LoadF2VRMS.Values.Time, VoltageLV(1,:), 'LineWidth', 1) % ploting single phase RMS
 
 grid on
-axis([2.9 3.1 0 1.3])
+axis([tEvent-0.1 tEvent+0.1 0 1.3])
 title('Load RMS Voltage ')
 ylabel('Voltage (p.u.)')
 xlabel('Time (s)')
@@ -72,7 +56,7 @@ CurrentLV=squeeze(logsout_LoadF2CRMS.Values.Data);
 plot(logsout_LoadF2CRMS.Values.Time, CurrentLV(1,:), 'LineWidth', 1) % ploting single phase RMS
 
 grid on
-axis([2.9 3.1 0 1.1])
+axis([tEvent-0.1 tEvent+0.1 0 1.1])
 title('Load RMS Current  ')
 ylabel('Current (p.u.)')
 xlabel('Time (s)')
@@ -86,7 +70,7 @@ CurrentLV=squeeze(logsout_LoadF2CRMS.Values.Data);
 plot(logsout_LoadF2CRMS.Values.Time, CurrentLV(1,:), 'LineWidth', 1) % ploting single phase RMS
 
 grid on
-axis([5.9 6.1  0 1.1])
+axis([tStart tStop  0 1.1])
 title('Load RMS Current  ')
 ylabel('Current (p.u.)')
 xlabel('Time (s)')

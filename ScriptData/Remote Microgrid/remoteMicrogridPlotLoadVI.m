@@ -1,4 +1,4 @@
-function remoteMicrogridPlotLoadVI(logsout,caseNum)
+function remoteMicrogridPlotLoadVI(logsout,tEvent,tStart,tStop)
 % Function to plot simulation results from remote_microgrid
 % Plot Description:
 %
@@ -12,21 +12,6 @@ figure(h2_remote_microgrid)
 
 clf(h2_remote_microgrid)
 
-% selecting time axis for the plot
-switch caseNum
-    case 1
-        tStart = 5.9;
-        tStop = 6.1;
-    case 2
-        tStart = 5.9;
-        tStop = 6.1;
-    case 3
-        tStart = 7.2;
-        tStop = 7.4;
-      case 4
-        tStart = 7.4;
-        tStop = 7.6;
-end 
 % Plot remote microgrid
 % Get simulation results
 logsout_LoadV = logsout.get('LVoltage');
@@ -37,7 +22,7 @@ simlog_handles(1) = subplot(2, 2, 1);
 plot(logsout_LoadV.Values.Time, logsout_LoadV.Values.Data, 'LineWidth', 1)
 
 grid on
-axis([2.9 3.1 -1.3 1.3])
+axis([tEvent-1 tEvent+1 -1.3 1.3])
 title('Three-Phase MV Load Voltage ')
 ylabel('Voltage (p.u.)')
 xlabel('Time (s)')
@@ -55,7 +40,7 @@ simlog_handles(1) = subplot(2, 2, 3);
 plot(logsout_LoadC.Values.Time, logsout_LoadC.Values.Data, 'LineWidth', 1)
 
 grid on
-axis([2.9 3.1 -1.3 1.3])
+axis([tEvent-1 tEvent+1 -1.3 1.3])
 title('Three-Phase MV Load Current ')
 ylabel('Current (p.u.)')
 xlabel('Time (s)')
