@@ -36,7 +36,7 @@ on:
     - cron:  '55/61 20/25 1/6 * *' # schedule a weekly-ish build
 
 jobs:
-    job-Remote-Microgrid-unit-tests:
+  job-Remote-Microgrid-unit-tests:
     runs-on: ubuntu-latest
     steps:
 
