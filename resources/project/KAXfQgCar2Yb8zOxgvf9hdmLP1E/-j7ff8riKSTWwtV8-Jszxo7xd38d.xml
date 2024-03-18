@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Info Type="Basic" Visible="1" Icon="" File="Data/RemoteMicrogrid" Name="RemoteMicrogrid"/>
+<Info File="Data/RemoteMicrogrid" Icon="" Name="RemoteMicrogrid" Type="Basic" Visible="1"/>
