@@ -19,11 +19,11 @@ end
 
 % Plot Load voltage and current
 loadVoltageLimit.max = 0.1;
-loadVoltageLimit.min = -0.05;
+loadVoltageLimit.min = -0.1;
 industrialMicrogridPlotLoadVI(simoutData.logsout_IndustrialMicrogrid,caseNum,loadVoltageLimit,microgrid);
 
 % Plot Load RMS voltage and current
 loadVoltageLimit.max = 0.1;
-loadVoltageLimit.min = -0.05;
+loadVoltageLimit.min = -0.1;
 industrialMicrogridPlotLoadVIRMS(simoutData.logsout_IndustrialMicrogrid,caseNum,loadVoltageLimit,microgrid);
 end

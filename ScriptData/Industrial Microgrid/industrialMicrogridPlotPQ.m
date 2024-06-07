@@ -41,7 +41,7 @@ plot(logsout_PLoad.Values.Time, logsout_PLoad.Values.Data, 'LineWidth', 1);
 
 grid on
 
-if strcmp(caseNum,5)
+if caseNum == 5
     yActiveScale = [-0.5 2.5];
 else
     yActiveScale = [-0.5 1];
@@ -66,7 +66,7 @@ hold on;
 plot(logsout_QLoad.Values.Time, logsout_QLoad.Values.Data, 'LineWidth', 1);
 grid on;
 
-if strcmp(caseNum,5)
+if caseNum == 5
     yReactiveScale = [-0.2 0.2];
 else
     yReactiveScale = [-0.2 1.5];

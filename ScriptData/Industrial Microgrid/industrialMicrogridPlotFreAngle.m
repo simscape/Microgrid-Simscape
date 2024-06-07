@@ -32,14 +32,19 @@ switch caseNum
         logsout_islanding = logsout.get('IslandingMG2');
         logsout_brkstatus = logsout.get('BRKStatusMG2');
 
+        % Neglect the initial data to avoid transients
+        tPlot = 2;
+        tIndex = find(logsout_islandcommand.Values.Time > tPlot,1);
+        tIndexPLL = find(logsout_gridfre.Values.Time > tPlot,1);
+
         % Plot results
-        plot(logsout_islandcommand.Values.Time, logsout_islandcommand.Values.Data, 'LineWidth', 1)
+        plot(logsout_islandcommand.Values.Time(tIndex:end), logsout_islandcommand.Values.Data(tIndex:end), 'LineWidth', 1)
         grid on
         hold on
-        plot(logsout_islanding.Values.Time, logsout_islanding.Values.Data, 'LineWidth', 1)
+        plot(logsout_islanding.Values.Time(tIndex:end), logsout_islanding.Values.Data(tIndex:end), 'LineWidth', 1)
         grid on
         hold on
-        plot(logsout_brkstatus.Values.Time, logsout_brkstatus.Values.Data, 'LineWidth', 1)
+        plot(logsout_brkstatus.Values.Time(tIndex:end), logsout_brkstatus.Values.Data(tIndex:end), 'LineWidth', 1)
         grid on
         axis([2 8 -0.1 2.5])
         title('Planned Island Command and BRK Status')
@@ -55,28 +60,33 @@ switch caseNum
         logsout_resynchcommand = logsout.get('ResynchCommandMG1');
         logsout_resynchronization = logsout.get('ResynchronizationMG1');
         logsout_brkstatus = logsout.get('BRKStatusMG1');
+        
+        % Neglect the initial data to avoid transients
+        tPlot = 2;
+        tIndex = find(logsout_resynchcommand.Values.Time > tPlot,1);
+        tIndexPLL = find(logsout_gridfre.Values.Time > tPlot,1);
 
         % change plot to blackstart of MG2
-        plot(logsout_resynchcommand.Values.Time, logsout_resynchcommand.Values.Data, 'LineWidth', 1)
+        plot(logsout_resynchcommand.Values.Time(tIndex:end), logsout_resynchcommand.Values.Data(tIndex:end), 'LineWidth', 1)
         grid on
         hold on
-        plot(logsout_resynchronization.Values.Time, logsout_resynchronization.Values.Data, 'LineWidth', 1)
+        plot(logsout_resynchronization.Values.Time(tIndex:end), logsout_resynchronization.Values.Data(tIndex:end), 'LineWidth', 1)
         grid on
         hold on
-        plot(logsout_brkstatus.Values.Time, logsout_brkstatus.Values.Data, 'LineWidth', 1)
+        plot(logsout_brkstatus.Values.Time(tIndex:end), logsout_brkstatus.Values.Data(tIndex:end), 'LineWidth', 1)
         grid on
         axis([2 8 -0.1 2.5])
         title(' Resynch Command and BRK Status')
         legend({'Resynch Command', 'Resynchronization', 'BRK Status'},'NumColumns',3);
 end
 
-flag=sum(logsout_gridfre.Values.Data>60+frequencyLimit*60)+sum(logsout_gridfre.Values.Data<60-frequencyLimit*60)+...
-    sum(logsout_islandfre.Values.Data>60+frequencyLimit*60)+sum(logsout_islandfre.Values.Data<60-frequencyLimit*60);
+flag=sum(logsout_gridfre.Values.Data(tIndexPLL:end)>60+frequencyLimit*60)+sum(logsout_gridfre.Values.Data(tIndexPLL:end)<60-frequencyLimit*60)+...
+    sum(logsout_islandfre.Values.Data(tIndexPLL:end)>60+frequencyLimit*60)+sum(logsout_islandfre.Values.Data(tIndexPLL:end)<60-frequencyLimit*60);
 simlog_handles(1) = subplot(4, 1, 2);
-plot(logsout_gridfre.Values.Time, logsout_gridfre.Values.Data, 'LineWidth', 1)
+plot(logsout_gridfre.Values.Time(tIndexPLL:end), logsout_gridfre.Values.Data(tIndexPLL:end), 'LineWidth', 1)
 grid on
 hold on
-plot(logsout_islandfre.Values.Time, logsout_islandfre.Values.Data, 'LineWidth', 1)
+plot(logsout_islandfre.Values.Time(tIndexPLL:end), logsout_islandfre.Values.Data(tIndexPLL:end), 'LineWidth', 1)
 
 
 grid on
@@ -97,23 +107,23 @@ ylabel('Frequency (Hz)')
 legend({'Grid Frequency', 'Island Frequency','Frequency Limits'},'NumColumns',3);
 
 simlog_handles(1) = subplot(4, 1, 3);
-plot(logsout_gridangle.Values.Time, logsout_gridangle.Values.Data, 'LineWidth', 1)
+plot(logsout_gridangle.Values.Time(tIndexPLL:end), logsout_gridangle.Values.Data(tIndexPLL:end), 'LineWidth', 1)
 grid on
 hold on
-plot(logsout_islandangle.Values.Time, logsout_islandangle.Values.Data, 'LineWidth', 1)
+plot(logsout_islandangle.Values.Time(tIndexPLL:end), logsout_islandangle.Values.Data(tIndexPLL:end), 'LineWidth', 1)
 grid on
 title('Grid and Island Voltage Angle')
 ylabel('Angle (deg)')
 axis([2 8 -190 190])
 legend({'Grid voltage angle', 'Island voltage angle'},'NumColumns',2);
 
-flag1=sum(logsout_gridvoltage.Values.Data>1+voltageLimit)+sum(logsout_gridvoltage.Values.Data(1100:end)<1-voltageLimit)+...
-    sum(logsout_islandvoltage.Values.Data>1+voltageLimit)+sum(logsout_islandvoltage.Values.Data(1100:end)<1-voltageLimit);
+flag1=sum(logsout_gridvoltage.Values.Data(tIndexPLL:end)>1+voltageLimit)+sum(logsout_gridvoltage.Values.Data(tIndexPLL:end)<1-voltageLimit)+...
+    sum(logsout_islandvoltage.Values.Data(tIndexPLL:end)>1+voltageLimit)+sum(logsout_islandvoltage.Values.Data(tIndexPLL:end)<1-voltageLimit);
 simlog_handles(1) = subplot(4, 1, 4); %#ok<*NASGU>
-plot(logsout_gridvoltage.Values.Time, logsout_gridvoltage.Values.Data, 'LineWidth', 1)
+plot(logsout_gridvoltage.Values.Time(tIndexPLL:end), logsout_gridvoltage.Values.Data(tIndexPLL:end), 'LineWidth', 1)
 
 hold on
-plot(logsout_islandvoltage.Values.Time, logsout_islandvoltage.Values.Data, 'LineWidth', 1,'Color','black')
+plot(logsout_islandvoltage.Values.Time(tIndexPLL:end), logsout_islandvoltage.Values.Data(tIndexPLL:end), 'LineWidth', 1,'Color','black')
 if flag1>0
     plot([2, 8],[1+voltageLimit,1+voltageLimit],'LineWidth',1,'Color','r','LineStyle','-')
     plot([2, 8],[1-voltageLimit,1-voltageLimit],'LineWidth',1,'Color','r','LineStyle','-')

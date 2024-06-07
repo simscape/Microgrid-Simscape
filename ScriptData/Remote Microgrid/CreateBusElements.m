@@ -66,9 +66,9 @@ for elementIdx = 1 : length(IslandElements)
 end
 
 % Create a simulink bus elements for Status
-StatusElements = {'mode','resync','plannedIslanding','blackStart','resyncEnable','loadReference','loadDispatch'};
+StatusElements = {'mode','resync','plannedIslanding','blackStart','resyncEnable','plannedIslandingEnable','loadReference','loadDispatch'};
 Status = Simulink.Bus;
-booleanIdx = [2,3,4,5,7];
+booleanIdx = [2,3,4,5,6,8];
 enumIdx = 1;
 for elementIdx = 1 : length(StatusElements)
     Status.Elements(elementIdx) = Simulink.BusElement;

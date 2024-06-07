@@ -45,13 +45,16 @@ else
     logsout_LoadCRMS = logsout.get('LoadCurrentRMSMG2');
 end
 
+% Neglect the initial data to avoid transients
+tPlot = 2;
+tIndex = find(logsout_LoadVRMS.Values.Time > tPlot,1);
 
-flag=sum(max(logsout_LoadVRMS.Values.Data(1100:end))>1+voltageLimitMax)+sum(min(logsout_LoadVRMS.Values.Data(1000:end))<1+voltageLimitMin);
+flag = max(logsout_LoadVRMS.Values.Data(tIndex:end,1))>1+voltageLimitMax||min(logsout_LoadVRMS.Values.Data(tIndex:end,1))<1+voltageLimitMin;
+
 % Plot results
-
 simlog_handles(1) = subplot(2, 2, 1);
 Voltage=squeeze(logsout_LoadVRMS.Values.Data); 
-plot(logsout_LoadVRMS.Values.Time, Voltage(:,1)', 'LineWidth', 1) % ploting single phase RMS
+plot(logsout_LoadVRMS.Values.Time(tIndex:end), Voltage((tIndex:end),1)', 'LineWidth', 1) % ploting single phase RMS
 
 hold on
 if flag>0
@@ -80,7 +83,7 @@ legend('','Max','','Min','NumColumns',2)
 
 simlog_handles(1) = subplot(2, 2, 2);
 Voltage=squeeze(logsout_LoadVRMS.Values.Data);
-plot(logsout_LoadVRMS.Values.Time, Voltage(:,1)', 'LineWidth', 1) % ploting single phase RMS
+plot(logsout_LoadVRMS.Values.Time(tIndex:end), Voltage((tIndex:end),1)', 'LineWidth', 1) % ploting single phase RMS
 hold on 
  
 if flag>0
@@ -107,7 +110,7 @@ xlabel('Time (s)')
 legend('','Max','','Min','NumColumns',2)
 simlog_handles(1) = subplot(2, 2, 3);
 Current= squeeze(logsout_LoadCRMS.Values.Data);
-plot(logsout_LoadCRMS.Values.Time, Current(:,1), 'LineWidth', 1) % ploting single phase RMS
+plot(logsout_LoadCRMS.Values.Time(tIndex:end), Current((tIndex:end),1), 'LineWidth', 1) % ploting single phase RMS
 grid on
 
 if caseNum == 5 && strcmp(microgrid,'Microgrid2')
@@ -122,7 +125,7 @@ xlabel('Time (s)')
 
 simlog_handles(1) = subplot(2, 2, 4);
 Current= squeeze(logsout_LoadCRMS.Values.Data);
-plot(logsout_LoadCRMS.Values.Time, Current(:,1), 'LineWidth', 1) % ploting single phase RMS
+plot(logsout_LoadCRMS.Values.Time(tIndex:end), Current((tIndex:end),1), 'LineWidth', 1) % ploting single phase RMS
 grid on
 
 axis([tStart tStop yScale])

@@ -19,15 +19,11 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
     
     properties
         model = 'IndustrialMicrogrid';
-        microgrid1Subsystems = {'MG1 Primary Substation','MG1 Solver Configuration','MG1 Unit Substation','MG1 Drilling Loads','MG1 Portable Substation'...
-            ,'MG1 Conveyor Belt','Selected Results/MG1','Operator Room/OperatorControlRoom/MG1 Controller : Commands and Measurements','MG1 Main Grid'...
-            ,'Operator Room/Signal Selector/MG1 Primary Substation','Operator Room/Signal Selector/MG1 Unit Substation',...
-            'Operator Room/Signal Selector/MG1 Portable Substation','Operator Room/Signal Selector/MG1 Load'...
+        microgrid1Subsystems = {'MG1 Primary Substation','MG1 Main Grid','MG1 Solver Configuration','MG1 Unit Substation','MG1 Drilling Loads','MG1 Portable Substation'...
+            ,'MG1 Conveyor Belt','Selected Results/MG1','Operator Room/MG1','MG1 Bus1','MG1 Bus2','MG1 Bus3','MG1 Bus4'...
             };
-        microgrid2Subsystems = {'MG2 Primary Substation','MG2 Solver Configuration','MG2 PV Plant','MG2 Power Center',...
-            'MG2 Processing, Lighting  and Auxiliary Loads','Selected Results/MG2','Operator Room/OperatorControlRoom/MG2 Controller : Commands and Measurements','MG2 Main Grid'...
-            ,'Operator Room/Signal Selector/MG2 Primary Substation','Operator Room/Signal Selector/MG2 Power Center',...
-            'Operator Room/Signal Selector/MG2 Load'};
+        microgrid2Subsystems = {'MG2 Primary Substation','MG2 Main Grid','MG2 Solver Configuration','MG2 PV Plant','MG2 Power Center',...
+            'MG2 Processing, Lighting  and Auxiliary Loads','Selected Results/MG2','Operator Room/MG2','MG2 Bus1','MG2 Bus2','MG2 Bus3'};
         simIn
     end
 
@@ -66,19 +62,15 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
             delayTime = [1 1 1];
             blackStartTime = 3;
 
-             % Set the initial operating point for resynchronization functionality
-            load('opCase4.mat','opCase4');
-            testCase.simIn = setVariable(testCase.simIn,'op',opCase4);
-
             % Comment the microgrid1 subsystems
             
             for idx = 1:length(testCase.microgrid1Subsystems)
-                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid1Subsystems{idx}),'commented','on');
+                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid1Subsystems{idx}),'Commented','on');
             end
 
             % Uncomment the microgrid2 subsystems
             for idx = 1:length(testCase.microgrid2Subsystems)      
-                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid2Subsystems{idx}),'commented','off');
+                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid2Subsystems{idx}),'Commented','off');
             end
 
             % Set black start controller parameters and necessary breaker
@@ -90,8 +82,8 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
             out = sim(testCase.simIn);
 
             % BESS voltage
-            bessVoltage = out.simlog_IndustrialMicrogrid.MG2_Primary_Substation.BESS_and_Controller_2.BESS_Converter_Measurement.Current_and_Voltage_Sensor_Three_Phase.V_output.series.values;
-            timeVal = out.simlog_IndustrialMicrogrid.MG2_Primary_Substation.BESS_and_Controller_2.BESS_Converter_Measurement.Current_and_Voltage_Sensor_Three_Phase.V_output.series.time;
+            bessVoltage = out.logsout_IndustrialMicrogrid.get('VabcBESS2').Values.Data;
+            timeVal = out.logsout_IndustrialMicrogrid.get('VabcBESS2').Values.Time;
 
             % Time window for comparing the actual and expected voltages
             timeWindow = [5 6 7];
@@ -117,7 +109,7 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
             % after islanding
 
             % Time at which islanding starts
-            islandingTime = 5;
+            islandingTime = 4;
 
             % Set the simulation stop time
             simulationTime = 8;
@@ -130,14 +122,12 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
 
             % Comment the microgrid1 subsystems
             for idx = 1:length(testCase.microgrid1Subsystems)
-                % set_param(strcat(testCase.model,'/',testCase.microgrid1Subsystems{idx}),'commented','on');
-                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid1Subsystems{idx}),'commented','on');
+                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid1Subsystems{idx}),'Commented','on');
             end
 
             % Uncomment the microgrid2 subsystems
             for idx = 1:length(testCase.microgrid2Subsystems)
-                %set_param(strcat(testCase.model,'/',testCase.microgrid2Subsystems{idx}),'commented','off');
-                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid2Subsystems{idx}),'commented','off');
+                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid2Subsystems{idx}),'Commented','off');
             end
 
             % Set active and reactive power thresholds for planned islanding
@@ -164,7 +154,7 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
             % microgrid
 
             % Time at which resynchronization starts
-            resyncTime = 5;
+            resyncTime = 3;
 
             % Set the simulation stop time
             simulationTime = 8;
@@ -176,18 +166,14 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
             threshold.frequency = 3;
             threshold.angle = 1;
 
-            % Set the initial operating point for the resynchronization functionality
-            load('opCase2.mat','opCase2');
-            testCase.simIn = setVariable(testCase.simIn,'op',opCase2);
-
             % Uncomment the microgrid1 subsystems
             for idx = 1:length(testCase.microgrid1Subsystems)
-                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid1Subsystems{idx}),'commented','off');
+                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid1Subsystems{idx}),'Commented','off');
             end
 
             % Comment the microgrid2 subsystems
             for idx = 1:length(testCase.microgrid2Subsystems)
-                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid2Subsystems{idx}),'commented','on');
+                testCase.simIn = setBlockParameter(testCase.simIn,strcat(testCase.model,'/',testCase.microgrid2Subsystems{idx}),'Commented','on');
             end
 
             % Set thresholds for resynchronization
@@ -233,12 +219,12 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
             % Create pre-event and post-event time ranges
             preEventTimeRange = timerange(seconds(eventTime-comparisonTime),seconds(eventTime));
             postEventTimeRange = timerange(seconds(eventTime+settlingTime),seconds(eventTime+settlingTime+comparisonTime));
-
+           
             % Verify the circuit breaker status
             if strcmp(event,'islanding')
-                testCase.verifyTrue(any(breakerStatus(postEventTimeRange,:).(element.breaker)),'Grid circuit breaker is closed and islanding has not happened. Please examine the model');
+                testCase.verifyFalse(all(breakerStatus(postEventTimeRange,:).(element.breaker)),'Grid circuit breaker is still closed and islanding has not happened. Please examine the model');
             else
-                testCase.verifyFalse(any(breakerStatus(postEventTimeRange,:).(element.breaker)),'Grid circuit breaker is opened and resynchronization has not happened. Please examine the model')
+                testCase.verifyFalse(all(breakerStatus(postEventTimeRange,:).(element.breaker)),'Grid circuit breaker is still opened and resynchronization has not happened. Please examine the model')
             end
 
             % Verify if the load power is the same before and after
@@ -262,6 +248,7 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
         function setBlackStartParametersForMicrogrid(testCase,blackStartTime,voltageLevels,delayTime)
             % Function to all the parameters required for the black start
             % of microgrid2
+            testCase.simIn = testCase.simIn.setVariable('microgrid.controller2UnplannedIslanding',100);
             testCase.simIn = testCase.simIn.setVariable('microgrid.controller2VFMode',1);
             testCase.simIn = testCase.simIn.setVariable('microgrid.controller2BlackStart',blackStartTime);
             testCase.simIn = testCase.simIn.setVariable('microgrid.controller2BlackStartDelayLevel1',delayTime(1));
@@ -273,21 +260,25 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
             testCase.simIn = testCase.simIn.setVariable('microgrid.controller2BlackStartBloackLoad1PickUp1',1.5);
             testCase.simIn = testCase.simIn.setVariable('microgrid.controller2BlackStartBloackLoad1PickUp2',1.5);
             testCase.simIn = testCase.simIn.setVariable('microgrid.controller2BlackStartBloackLoad1PickUp3',1.5);
+            testCase.simIn = testCase.simIn.setVariable('microgrid.controller2Blackout',0);
         end
 
         function setBreakerParametersForMicrogridBlackStart(testCase)
             % Function to the circuit breaker parameters for black start
+            testCase.simIn = setVariable(testCase.simIn,'microgrid.PCC2BrkInitStatus',1); 
             testCase.simIn = setVariable(testCase.simIn,'microgrid.controller2DieselBrk',0); 
             testCase.simIn = setVariable(testCase.simIn,'microgrid.controller2PVBrk',20);
             testCase.simIn = setVariable(testCase.simIn,'microgrid.controller2Load3Control',20);
             testCase.simIn = setVariable(testCase.simIn,'microgrid.controller2Load4Control',20);
             testCase.simIn = setVariable(testCase.simIn,'microgrid.controller2Load5Control',20);
+            testCase.simIn = testCase.simIn.setVariable('microgrid.controller2SwitchableLoad',0);
         end
 
         function setPlannedIslandingParametersForMicrogrid(testCase,powerThreshold)
             % Function to set the planned island parameters for microgrid2
             testCase.simIn = setVariable(testCase.simIn,'microgrid.zeroActivePowerThreshold2',powerThreshold.active);
             testCase.simIn = setVariable(testCase.simIn,'microgrid.zeroReactivePowerThreshold2',powerThreshold.reactive);
+            testCase.simIn = setVariable(testCase.simIn,'microgrid.plannedIslandDelay',0.05);
         end     
 
         function setBreakerParametersForPlannedIslanding(testCase,islandingTime)
@@ -302,11 +293,14 @@ classdef IndustrialMicrogridSystemTest < matlab.unittest.TestCase
             testCase.simIn = setVariable(testCase.simIn,'microgrid.frequencyThreshold',threshold.frequency);
             testCase.simIn = setVariable(testCase.simIn,'microgrid.voltageThreshold',threshold.voltage);
             testCase.simIn = setVariable(testCase.simIn,'microgrid.angleThreshold',threshold.angle);
+            testCase.simIn = setVariable(testCase.simIn,'microgrid.resynchDelay',0.0038);
         end
 
         function setBreakerParametersForResynchronization(testCase,resyncTime)
             % Function to set the circuit breaker status for resunchronization
             % Breaker settings for Microgrid1
+            testCase.simIn = setVariable(testCase.simIn,'microgrid.PCC1BrkInitStatus',1); 
+            testCase.simIn = setVariable(testCase.simIn,'microgrid.controller1PCCBrk',100); 
             testCase.simIn = setVariable(testCase.simIn,'microgrid.controller1Resynch',resyncTime);
             testCase.simIn = setVariable(testCase.simIn,'microgrid.controller1Load1Control',0);
             testCase.simIn = setVariable(testCase.simIn,'microgrid.controller2Load1Control',0);
