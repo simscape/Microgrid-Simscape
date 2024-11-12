@@ -3,7 +3,7 @@
 %
 % This plot shows the loss, frequency deviation and voltage deviation.
 
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2023-2024 The MathWorks, Inc.
 IndustrialMicrogridInputData;
 
 % Generate the below MAT files by running IndustrialMicrogridDesign.mlx

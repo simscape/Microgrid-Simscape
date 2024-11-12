@@ -1,4 +1,5 @@
 classdef MicrogridStatus < Simulink.IntEnumType
+    % Copyright 2023-2024 The MathWorks, Inc.
     % MATLAB enumeration class definition generated from template
     %   to track the active leaf state of RemoteMicrogrid/Diesel Substation, BESS, & Microgrid Controller/Microgrid Controller/Microgrid Supervisory Control/Transition and Dispatch Control.
     

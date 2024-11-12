@@ -4,7 +4,7 @@
 % This plot shows the THD of load voltage and PCC voltage. It also shows
 % the load voltage deviations.
 
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2023-2024 The MathWorks, Inc.
 
 IndustrialMicrogridInputData;
 
