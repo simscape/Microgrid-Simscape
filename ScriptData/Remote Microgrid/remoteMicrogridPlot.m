@@ -1,7 +1,7 @@
 function remoteMicrogridPlot(caseNum,simoutData)
 % Function to plot simulation results from RemoteMicrogrid
 
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 voltageLimit = 0.1;
 frequencyLimit = 0.02;
 

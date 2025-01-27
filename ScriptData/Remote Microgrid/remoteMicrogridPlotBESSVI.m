@@ -19,7 +19,11 @@ logsout_iBESS = logsout.get('CurrentBESS');
 logsout_iGrid = logsout.get('iGRID');
 
 % Plot results
-flag=sum(logsout_vabcBESS.Values.Data>1+voltageLimit)+sum(logsout_vabcBESS.Values.Data<-1-voltageLimit);
+% Neglect the initial data to avoid transients
+tPlot = 2;
+tIndexStart = find(logsout_vabcBESS.Values.Time > tEvent-0.1,1);
+tIndexEnd = find(logsout_vabcBESS.Values.Time > tEvent+0.1,1);
+flag=sum(logsout_vabcBESS.Values.Data(tIndexStart:tIndexEnd,1:3)>1+voltageLimit)+sum(logsout_vabcBESS.Values.Data(tIndexStart:tIndexEnd,1:3)<-1-voltageLimit);
 
 simlog_handles(1) = subplot(3, 2, 1);
 plot(logsout_vabcBESS.Values.Time, logsout_vabcBESS.Values.Data, 'LineWidth', 1)

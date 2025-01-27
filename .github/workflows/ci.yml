@@ -9,7 +9,7 @@
 # For details about the syntax of this file, see
 # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
 
-# Copyright 2023-2024 The MathWorks, Inc.
+# Copyright 2023-2025 The MathWorks, Inc.
 
 name: CI using MATLAB
 
@@ -46,7 +46,7 @@ jobs:
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v1
         with:
-          release: R2024a
+          release: R2024b
 
       - name: Run tests
         uses: matlab-actions/run-command@v1
@@ -63,7 +63,7 @@ jobs:
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v1
         with:
-          release: R2024a
+          release: R2024b
 
       - name: Run tests
         uses: matlab-actions/run-command@v1
@@ -80,7 +80,7 @@ jobs:
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v1
         with:
-          release: R2024a
+          release: R2024b
 
       - name: Run tests
         uses: matlab-actions/run-command@v1
