@@ -52,7 +52,7 @@ jobs:
             Simulink
             Simscape
             Simscape_Electrical
-            Optimization_ToolBox
+            Optimization_Toolbox
             Stateflow
 
       - name: Run tests
@@ -76,7 +76,7 @@ jobs:
             Simulink
             Simscape
             Simscape_Electrical
-            Optimization_ToolBox
+            Optimization_Toolbox
             Stateflow
 
       - name: Run tests
@@ -100,7 +100,7 @@ jobs:
             Simulink
             Simscape
             Simscape_Electrical
-            Optimization_ToolBox
+            Optimization_Toolbox
             Stateflow
 
       - name: Run tests
