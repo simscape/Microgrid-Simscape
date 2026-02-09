@@ -67,5 +67,5 @@ This flowchart describes the steps of a techno-economic analysis in this example
 * In the toolstrip, use the project shortcut buttons to open the example.
 * This example requires MATLAB R2024a or later.
 
-Copyright 2022-2024 The MathWorks, Inc.
+Copyright 2022-2026 The MathWorks, Inc.
 
