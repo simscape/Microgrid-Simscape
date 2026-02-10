@@ -65,7 +65,7 @@ This flowchart describes the steps of a techno-economic analysis in this example
 * Clone and add the repository to the MATLAB&reg; path.
 * Open MicrogridDesignWithSimscape.prj.
 * In the toolstrip, use the project shortcut buttons to open the example.
-* This example requires MATLAB R2024a or later.
+* This example requires MATLAB R2025a or later.
 
 Copyright 2022-2026 The MathWorks, Inc.
 
