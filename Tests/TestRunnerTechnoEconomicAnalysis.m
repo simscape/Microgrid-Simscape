@@ -1,7 +1,7 @@
 %% Script to run unit tests
 % This script runs the unit test and generates the code coverage report
 
-% Copyright 2024 The MathWorks, Inc.
+% Copyright 2024-2026 The MathWorks, Inc.
 
 relStr = matlabRelease().Release;
 disp("This is MATLAB " + relStr + ".")
@@ -11,7 +11,7 @@ topFolder = currentProject().RootFolder;
 %% Create test suite
 
 suite = matlab.unittest.TestSuite.fromFile(...
-fullfile(topFolder, "Test_Scripts", "TechnoEconomicAnalysisWorkflowTest.m"));
+fullfile(topFolder, "Tests", "TechnoEconomicAnalysisWorkflowTest.m"));
 
 %% Create test runner
 
