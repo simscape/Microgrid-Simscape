@@ -1,7 +1,5 @@
-classdef TechnoEconomicAnalysisUnitTest < matlab.unittest.TestCase
-    %% Class implementation of unit test
-
-    % Copyright 2024 The MathWorks, Inc.
+classdef BaseTest < matlab.unittest.TestCase
+%Tester
     properties
         openfigureListBefore;
         openModelsBefore;
@@ -36,16 +34,5 @@ classdef TechnoEconomicAnalysisUnitTest < matlab.unittest.TestCase
             close_system(modelsOpenedByTest, 0);
         end
     end
-    methods (Test)
 
-        function test_TechnoEconomicAnalysis(~)
-            % Exercise the script TechnoEconomicAnalysis
-            TechnoEconomicAnalysis;
-        end
-
-        function test_SolarMPPTVoltage(~)
-            % Exercise the script SolarMPPTVoltage
-            SolarMPPTVoltage;
-        end
-    end
 end

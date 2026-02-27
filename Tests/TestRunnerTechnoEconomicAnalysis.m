@@ -11,7 +11,7 @@ topFolder = currentProject().RootFolder;
 %% Create test suite
 
 suite = matlab.unittest.TestSuite.fromFile(...
-fullfile(topFolder, "Test_Scripts", "TechnoEconomicAnalysisUnitTest.m"));
+fullfile(topFolder, "Test_Scripts", "TechnoEconomicAnalysisWorkflowTest.m"));
 
 %% Create test runner
 

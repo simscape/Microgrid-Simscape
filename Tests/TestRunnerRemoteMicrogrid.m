@@ -11,7 +11,7 @@ topFolder = currentProject().RootFolder;
 %% Create test suite
 
 suite = matlab.unittest.TestSuite.fromFile(...
-fullfile(topFolder, "Test_Scripts", "RemoteMicrogridUnitTest.m"));
+fullfile(topFolder, "Test_Scripts", "RemoteMicrogridWorkflowTest.m"));
 
 %% Create test runner
 
