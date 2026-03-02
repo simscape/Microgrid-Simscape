@@ -1,4 +1,16 @@
 # Microgrid Design with Simscape
+
+## Table of Contents
+- [Overview](#overview) 
+- [Microgrid Components](#microgrid-components)
+- [Microgrid Design and Control](#microgrid-design-and-control)
+- [Scenario Driven Microgrid Models](#scenario-driven-microgrid-models)
+  - [Design, Operation, and Control of Remote Microgrid](#design-operation-and-control-of-remote-microgrid)
+  - [Design of Stable Industrial Microgrid](#design-of-stable-industrial-microgrid)
+  - [Perform Techno-Economic Analysis of Microgrids](#perform-techno-economic-analysis-of-microgrids)
+- [Setup](#setup)  
+
+## 🌍 Overview
 The International Council on Large Electric Systems (CIGRE) defines microgrids as 
 ‘electricity distribution systems containing loads and distributed energy resources, 
 (such as distributed generators, storage devices, or controllable loads) that can be
@@ -9,10 +21,36 @@ network or while islanded’.
 
 [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=simscape/Microgrid-Simscape)
 
-## Design, Operation, and Control of Remote Microgrid
-There are different types of microgrid applications such as residential microgrids, 
-remote microgrids, industrial microgrids, and many more. This example shows the 
-operation of a remote microgrid with diesel generator, battery energy storage 
+This repository contains a complete workflow that demonstrates how to design, simulate, 
+and analyze complex microgrid architectures using MATLAB® and Simscape™. The workflow 
+includes standardized components, reusable control templates, and multiple scenario driven models.
+
+## Microgrid Components
+These components provide all foundational building blocks used by the Microgrid Design and Control architecture and 
+the scenario oriented models.The architecture encourages consistency, reuse, and flexibility.
+Key characteristics include:
+
+* Standardized electrical and control interfaces
+* Parameter templates
+* Dedicated test harnesses
+* Reusable control logic
+* Configurable topology options
+
+![](Images/Components.png)
+
+### Microgrid Design and Control
+This model serves as the primary system architecture in the repository. It integrates 
+distributed energy resources, energy storage, protection logic, and supervisory control. 
+The architecture allows you to design microgrids that operate reliably during both grid connected and islanded modes.
+
+![](Images/MicrogridDesignControl.png)
+
+## Scenario Driven Microgrid Models
+Microgrids are deployed in different environments such as residential communities, industrial facilities, and remote locations. 
+The repository includes three scenario oriented examples that demonstrate how the architecture performs in each setting.
+
+### Design, Operation, and Control of Remote Microgrid
+This example shows the operation of a remote microgrid with diesel generator, battery energy storage 
 system, photovoltaic, and loads in Simscape&trade;.
 
 Microgrids developed in remote places ensure reliable and uninterrupted power. 
@@ -22,34 +60,26 @@ how to develop, evaluate, and operate a remote microgrid, see the Design,
 Operation, and Control of Remote Microgrid example.
 The planning objectives in this remote microgrid example include power 
 reliability, renewable power usage, and reduction in diesel consumption.
- The key indices for economic benefits for the remote microgrid include life
- cycle cost, net revenue, payback period, and internal rate of return. 
+The key indices for economic benefits for the remote microgrid include life
+cycle cost, net revenue, payback period, and internal rate of return. 
 
 ![](Images/remotemicrogrid.png)
 
-## Design of Stable Industrial Microgrid
-In this example, these indices are improved through reduction in diesel
- usage, maximum usage of renewable energy, and operation of the BESS.
- This example uses various standards for covering, planning, designing,
- controlling, and testing. The control performance evaluation includes 
-conformation of standards for power quality.
-
-The second example is about industrial microgrid. In an industrial microgrid, 
-the planning objectives are ensuring power reliability, minimize downtime, 
-faster system reconfiguration during fault and cost optimization. Electrical 
-design covers the voltage selection, network structure, grounding etc. while 
+### Design of Stable Industrial Microgrid
+In an industrial microgrid, the planning objectives are ensuring power reliability, 
+minimize downtime, faster system reconfiguration during fault and cost optimization. 
+Electrical design covers the voltage selection, network structure, grounding etc. while 
 the automation design ensures system protection, monitoring, communication etc. 
 In this example, two main grids connect through two primary substations. Each 
 substation has one BESS units and one microgrid controller. The industrial grid
- operates as two microgrids connected through a normally open switch. 
+operates as two microgrids connected through a normally open switch. 
 
 This figure shows various aspects from different standards considered in this workflow. 
 The microgrid standards and industrial process standard are mapped at different control levels.
 
 ![](Images/IndustrialMicrogrid.png)
-
-## Perform Techno-Economic Analysis of Microgrids
-The third example is about techno-economic analysis of microgrids. Techno-economic analysis
+### Perform Techno-Economic Analysis of Microgrids
+This example is about techno-economic analysis of microgrids. Techno-economic analysis
  of microgrids is a comprehensive study that integrates technical performance and economic viability
  to assess the feasibility and effectiveness of different microgrids. Microgrids comprise multiple 
 distributed energy resources (DERs) including solar panels, wind turbines, generators, 
@@ -61,11 +91,11 @@ This flowchart describes the steps of a techno-economic analysis in this example
 
 ![](Images/TechnoEconomicAnalysis.png)
 
-## Setup
+## 🚀Setup
 * Clone and add the repository to the MATLAB&reg; path.
 * Open MicrogridDesignWithSimscape.prj.
 * In the toolstrip, use the project shortcut buttons to open the example.
-* This example requires MATLAB R2025a or later.
+* This example requires MATLAB R2025b or later.
 
 Copyright 2022-2026 The MathWorks, Inc.
 
