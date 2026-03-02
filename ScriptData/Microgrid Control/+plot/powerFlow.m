@@ -5,13 +5,14 @@ function powerFlow(logsout,caseNum)
 
 arguments
     logsout
-    caseNum (1,1) double = 1;
+    caseNum (1,1) double = 1; %#ok<*INUSA>
 end
 
 
 % Create new figure
-PlotPower = figure('Name', 'Power flow in microgrid');
-figure(PlotPower)
+PlotPower = figure('Name', 'Power flow in microgrid'); %#ok<*NASGU>
+figure(PlotPower);
+clf(PlotPower);
 
 
 tStart = 3.5;

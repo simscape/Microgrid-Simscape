@@ -10,9 +10,9 @@ end
 
 
 % Create new figure
-PlotMicrogridStatus = figure('Name', 'PlotMicrogridStatus');
+PlotMicrogridStatus = figure('Name', 'PlotMicrogridStatus'); %#ok<*NASGU>
 figure(PlotMicrogridStatus)
-%clf(PlotLoadVI)
+clf(PlotMicrogridStatus)
 
 % selecting time axis for the plot
 switch caseNum

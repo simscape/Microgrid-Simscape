@@ -17,9 +17,9 @@ else
     figureName = 'loadVIRMS';
 end
 % Create new figure
-PlotLoadVI = figure('Name', figureName);
+PlotLoadVI = figure('Name', figureName); %#ok<*NASGU>
 figure(PlotLoadVI)
-%clf(PlotLoadVI)
+clf(PlotLoadVI)
 
 % selecting time axis for the plot
 switch caseNum
