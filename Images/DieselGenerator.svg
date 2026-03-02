@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:d="http://www.mathworks.com/blockgraphics" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg" width="50" height="50" viewBox="0 0 50 50" d:options="ScalingOnResizeMax:2.0;Rotate:Off;Resize:FitToBlock;" fill="none">
+	<g id="part" title="part_0">
+		<rect id="rect" fill="white" x="0" y="0" width="50" height="50" rx="0" ry="0"/>
+		<rect id="rect_1" stroke="black" style="stroke:#268cdd;" x="10.5" y="14.5" width="31" height="20" rx="1" ry="1"/>
+		<path id="path" stroke="black" style="stroke:#268cdd;" d=" M 43.5,9.5 C 43.5,10.71 42.73,11.5 42,11.5 C 41.27,11.5 40.5,10.71 40.5,9.5 C 40.5,8.29 41.27,7.5 42,7.5 C 42.73,7.5 43.5,8.29 43.5,9.5 Z"/>
+		<path id="path_2" stroke="black" stroke-linecap="round" style="stroke:#268cdd;" d=" M 42,7.5 H 35.5 C 33.84,7.5 32.5,8.84 32.5,10.5 V 14"/>
+		<path id="path_3" stroke="black" stroke-linecap="round" style="stroke:#268cdd;" d=" M 42,11.5 H 39 C 38.45,11.5 38,11.95 38,12.5 V 14.5"/>
+		<ellipse id="ellipse" stroke="black" style="stroke:#268cdd;" cx="34.5" cy="20.5" rx="3" ry="3"/>
+		<path id="path_4" stroke="black" stroke-linecap="round" style="stroke:#268cdd;" d=" M 34.5,20.5 L 32.5,22.5 M 34.5,28 L 33.5,29"/>
+		<ellipse id="ellipse_5" stroke="black" style="stroke:#268cdd;" cx="34.5" cy="28" rx="2" ry="2"/>
+		<path id="path_6" stroke="black" style="stroke:#268cdd;" d=" M 7,18 C 7,17.45 7.45,17 8,17 H 10 V 31 H 8 C 7.45,31 7,30.55 7,30 V 18 Z"/>
+		<path id="path_7" stroke="black" style="stroke:#268cdd;" d=" M 11.5,36.5 C 10.95,36.5 10.5,36.05 10.5,35.5 V 35.5 C 10.5,34.95 10.95,34.5 11.5,34.5 H 40.5 C 41.05,34.5 41.5,34.95 41.5,35.5 V 35.5 C 41.5,36.05 41.05,36.5 40.5,36.5 H 11.5 Z"/>
+		<rect id="rect_8" stroke="black" style="stroke:#268cdd;" x="17.5" y="17.5" width="10" height="5" rx="0.5" ry="0.5"/>
+	</g>
+</svg>

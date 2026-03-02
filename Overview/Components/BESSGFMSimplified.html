@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2025b"><title>Grid-Forming Battery Energy Storage System Simplified</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin-bottom: 20px; padding-bottom: 4px;  }
+.S2 { margin: 0px; padding: 10px 0px 10px 5px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 700; text-align: start;  }
+.S3 { margin: -1px 0px 0px; padding: 10px 0px 10px 7px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: start;  }
+.S4 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 25px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S5 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S6 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20.4px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S7 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S8 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.S9 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 25px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S10 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 20.4px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S11 { margin: 3px; border: 1px solid rgb(191, 191, 191); border-collapse: collapse;  }
+.S12 { background-color: rgba(0, 0, 0, 0);  }
+.S13 { border: 1px solid rgb(191, 191, 191); vertical-align: top;  }
+.S14 { margin: 2px 10px 2px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: break-spaces; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: center;  }
+.S15 { margin: 2px 10px 2px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: break-spaces; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0' id = 'TMP_47ae' ><span>Grid-Forming Battery Energy Storage System Simplified</span></h1><div  class = 'S1'><div  class = 'S2'><span style=' font-weight: bold;'>Table of Contents</span></div><div  class = 'S3'><a href = "#TMP_8eb0"><span>Overview
+</span></a><span>    </span><a href = "#TMP_4aef"><span>Functionality 
+</span></a><a href = "#TMP_77c8"><span>Ports
+</span></a><span>    </span><a href = "#TMP_7e8e"><span>Inputs
+</span></a><span>    </span><a href = "#TMP_1ad7"><span>Ouputs
+</span></a><a href = "#TMP_43e4"><span>Parameters</span></a></div></div><h2  class = 'S4' id = 'TMP_8eb0' ><span>Overview</span></h2><div  class = 'S5'><span>This block models a Grid-Forming (GFM) battery energy storage system (BESS)  model provides an abstracted representation of a GFM-BESS for system level studies. This block supports simplified control structures to facilitate faster simulations and easier integration into larger grid models.</span></div><h3  class = 'S6' id = 'TMP_4aef' ><span>Functionality </span></h3><div  class = 'S5'><span>This block is modeled as an ideal controlled voltage source whose magnitude is controlled by the reactive droop control and phase is controlled by active droop control. </span></div><div  class = 'S5'><span>The key features of this block include : </span></div><ul  class = 'S7'><li  class = 'S8'><span style=' font-weight: bold;'>Reduced-Order Modeling</span><span>:</span><span> </span><span>Focuses on essential dynamic behavior, omitting detailed converter switching and inner control loops.</span></li><li  class = 'S8'><span style=' font-weight: bold;'>Droop control </span><span>:</span><span> The phase angle of the output voltage is adjusted based on the active power (P), enabling frequency support and reactive power sharing. The voltage magnitude is dynamically adjusted according to the reactive power (Q) using droop control logic, supporting grid voltage regulation and power sharing. </span></li><li  class = 'S8'><span style=' font-weight: bold;'>Simplified Converter Mode</span><span>l : The battery is connected to the grid via a simplified converter that does not explicitly model switching or inner control loops.</span></li><li  class = 'S8'><span style=' font-weight: bold;'>Applications</span><span> : Suitable for microgrid operation, black start, and voltage/frequency regulation studies.</span></li></ul><div  class = 'S5'><span>This block operates either in voltage and frequency (V/F) mode or the active and reactive power (PQ) mode. In the V/F mode, voltage magnitude input to the controlled voltage is driven by the voltage droop, phase input is driven by the frequency droop. In the PQ mode, voltage magnitude input to the controlled voltage is driven by the reactive power droop, phase input is driven by the active power droop. </span></div><h2  class = 'S9' id = 'TMP_77c8' ><span>Ports</span></h2><h3  class = 'S10' id = 'TMP_7e8e' ><span>Inputs</span></h3><div  class = 'S5'><span>This table gives you the details about the different inputs to the block.</span></div><table  class = 'S11'><col style="width: 83.3333740234375px;" /><col/><tr  class = 'S12'><td  class = 'S13'><div  class = 'S14'><span style=' font-family: monospace;'>Input</span></div></td><td  class = 'S13'><div  class = 'S14'><span style=' font-family: monospace;'>Description</span></div></td></tr><tr  class = 'S12'><td  class = 'S13'><div  class = 'S15'><span>Reference</span></div></td><td  class = 'S13'><div  class = 'S15'><span>External setpoint for voltage, frequency, active power, and reactive power</span></div></td></tr><tr  class = 'S12'><td  class = 'S13'><div  class = 'S15'><span>Mode</span></div></td><td  class = 'S13'><div  class = 'S15'><span>Give 1 for PQ mode, 0 for V/F mode</span></div></td></tr></table><h3  class = 'S10' id = 'TMP_1ad7' ><span>Ouputs</span></h3><div  class = 'S5'><span>This table gives you the details about different outputs of the block.</span></div><table  class = 'S11'><col style="width: 253.33331298828125px;" /><col/><tr  class = 'S12'><td  class = 'S13'><div  class = 'S14'><span style=' font-family: monospace;'>Output</span></div></td><td  class = 'S13'><div  class = 'S14'><span style=' font-family: monospace;'>Description</span></div></td></tr><tr  class = 'S12'><td  class = 'S13'><div  class = 'S15'><span>Meas</span></div></td><td  class = 'S13'><div  class = 'S15'><span>Measurement bus to monitor BESS current, voltage, active power, and reactive power</span></div></td></tr><tr  class = 'S12'><td  class = 'S13'><div  class = 'S15'><span>~</span></div></td><td  class = 'S13'><div  class = 'S15'><span>Three-phase port</span></div></td></tr></table><h2  class = 'S9' id = 'TMP_43e4' ><span>Parameters</span></h2><div  class = 'S5'><span>This table describes the different parameters of the block.</span></div><table  class = 'S11'><col/><col/><tr  class = 'S12'><td  class = 'S13'><div  class = 'S14'><span style=' font-weight: bold; font-family: monospace;'>Parameter</span></div></td><td  class = 'S13'><div  class = 'S14'><span style=' font-weight: bold; font-family: monospace;'>Description</span></div></td></tr><tr  class = 'S12'><td  class = 'S13'><div  class = 'S15'><span>General</span></div></td><td  class = 'S13'><div  class = 'S15'><span>Rated and nominal values of BESS, droop coefficients</span></div></td></tr></table><div  class = 'S5'><span>          </span></div><div  class = 'S5'><span>Copyright 2026 The MathWorks, Inc.</span></div><div  class = 'S5'><span style=' font-weight: bold;'>                </span></div><div  class = 'S5'><span></span></div><div  class = 'S5'><span></span></div><div  class = 'S5'><span></span></div><div  class = 'S5'><span> </span></div><div  class = 'S5'><span></span></div><div  class = 'S5'><span></span></div><div  class = 'S5'></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Grid-Forming Battery Energy Storage System Simplified
+%% Overview
+% This block models a Grid-Forming (GFM) battery energy storage system (BESS)  
+% model provides an abstracted representation of a GFM-BESS for system level studies. 
+% This block supports simplified control structures to facilitate faster simulations 
+% and easier integration into larger grid models.
+% Functionality 
+% This block is modeled as an ideal controlled voltage source whose magnitude 
+% is controlled by the reactive droop control and phase is controlled by active 
+% droop control. 
+% 
+% The key features of this block include : 
+%% 
+% * *Reduced-Order Modeling*: Focuses on essential dynamic behavior, omitting 
+% detailed converter switching and inner control loops.
+% * *Droop control* : The phase angle of the output voltage is adjusted based 
+% on the active power (P), enabling frequency support and reactive power sharing. 
+% The voltage magnitude is dynamically adjusted according to the reactive power 
+% (Q) using droop control logic, supporting grid voltage regulation and power 
+% sharing. 
+% * *Simplified Converter Mode*l : The battery is connected to the grid via 
+% a simplified converter that does not explicitly model switching or inner control 
+% loops.
+% * *Applications* : Suitable for microgrid operation, black start, and voltage/frequency 
+% regulation studies.
+%% 
+% This block operates either in voltage and frequency (V/F) mode or the active 
+% and reactive power (PQ) mode. In the V/F mode, voltage magnitude input to the 
+% controlled voltage is driven by the voltage droop, phase input is driven by 
+% the frequency droop. In the PQ mode, voltage magnitude input to the controlled 
+% voltage is driven by the reactive power droop, phase input is driven by the 
+% active power droop. 
+%% Ports
+% Inputs
+% This table gives you the details about the different inputs to the block.
+%% 
+% |Input|
+%% 
+% |Description|
+%% 
+% Reference
+%% 
+% External setpoint for voltage, frequency, active power, and reactive power
+%% 
+% Mode
+%% 
+% Give 1 for PQ mode, 0 for V/F mode
+% Ouputs
+% This table gives you the details about different outputs of the block.
+%% 
+% |Output|
+%% 
+% |Description|
+%% 
+% Meas
+%% 
+% Measurement bus to monitor BESS current, voltage, active power, and reactive 
+% power
+%% 
+% ~
+%% 
+% Three-phase port
+%% Parameters
+% This table describes the different parameters of the block.
+%% 
+% |*Parameter*|
+%% 
+% |*Description*|
+%% 
+% General
+%% 
+% Rated and nominal values of BESS, droop coefficients
+%% 
+% 
+% 
+% Copyright 2026 The MathWorks, Inc.
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+%
+##### SOURCE END #####
+-->
+</div></body></html>

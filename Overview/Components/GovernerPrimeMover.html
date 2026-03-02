@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2025b"><title>Governer and Prime Mover</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin-bottom: 20px; padding-bottom: 4px;  }
+.S2 { margin: 0px; padding: 10px 0px 10px 5px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 700; text-align: start;  }
+.S3 { margin: -1px 0px 0px; padding: 10px 0px 10px 7px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: start;  }
+.S4 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 25px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S5 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S6 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S7 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.S8 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 20.4px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S9 { margin: 3px; border: 1px solid rgb(191, 191, 191); border-collapse: collapse;  }
+.S10 { background-color: rgb(245, 245, 245);  }
+.S11 { border: 1px solid rgb(191, 191, 191); vertical-align: top;  }
+.S12 { margin: 2px 10px 2px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: break-spaces; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: center;  }
+.S13 { background-color: rgba(0, 0, 0, 0);  }
+.S14 { margin: 2px 10px 2px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: break-spaces; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0' id = 'TMP_8fd6' ><span>Governer and Prime Mover</span></h1><div  class = 'S1'><div  class = 'S2'><span style=' font-weight: bold;'>Table of Contents</span></div><div  class = 'S3'><a href = "#TMP_4eec"><span>Overview
+</span></a><a href = "#TMP_75c8"><span>Detailed Description
+</span></a><span>    </span><a href = "#TMP_72dd"><span>Block Functionality
+</span></a><span>    </span><a href = "#TMP_7e99"><span>Control Structure
+</span></a><a href = "#TMP_2587"><span>Ports
+</span></a><span>    </span><a href = "#TMP_7d71"><span>Inputs
+</span></a><span>    </span><a href = "#TMP_8556"><span>Outputs
+</span></a><a href = "#TMP_89f3"><span>Parameters</span></a></div></div><h2  class = 'S4' id = 'TMP_4eec' ><span>Overview</span></h2><div  class = 'S5'><span>This block models the </span><span style=' font-weight: bold;'>mechanical power control path</span><span> for synchronous machines driven by either :</span></div><ul  class = 'S6'><li  class = 'S7'><span style=' font-weight: bold;'>Steam turbine (non-reheat)</span><span>, or</span></li><li  class = 'S7'><span style=' font-weight: bold;'>Diesel engine</span><span>.</span></li></ul><div  class = 'S5'><span>It combines :</span></div><ul  class = 'S6'><li  class = 'S7'><span>A </span><span style=' font-weight: bold;'>governor</span><span> that regulates speed/frequency by adjusting energy input (steam valve or fuel rack).</span></li><li  class = 'S7'><span>A </span><span style=' font-weight: bold;'>prime mover model</span><span> that converts the energy input into mechanical power/torque using configurable </span><span style=' font-weight: bold;'>time constants</span><span>.</span></li></ul><div  class = 'S5'><span style=' font-weight: bold;'>Applications</span><span>:</span></div><ul  class = 'S6'><li  class = 'S7'><span>Frequency control and primary response.</span></li><li  class = 'S7'><span>Microgrid islanding and resynchronization.</span></li><li  class = 'S7'><span>Generator dynamic studies for thermal and diesel units.</span></li></ul><h2  class = 'S4' id = 'TMP_75c8' ><span>Detailed Description</span></h2><h3  class = 'S8' id = 'TMP_72dd' ><span>Block Functionality</span></h3><div  class = 'S5'><span>This block :</span></div><ul  class = 'S6'><li  class = 'S7'><span>Compares rotor speed/frequency to reference and computes an energy input command.</span></li><li  class = 'S7'><span>Applies governor droop or isochronous control with PI logic.</span></li><li  class = 'S7'><span>Models prime mover dynamics using cascaded first-order lags: </span></li><li  class = 'S7'><span style=' font-weight: bold;'>Steam turbine</span><span>: valve lag + turbine stage lag.</span></li><li  class = 'S7'><span style=' font-weight: bold;'>Diesel engine</span><span>: fuel system lag and engine torque lag.</span></li><li  class = 'S7'><span>Outputs torque (</span><span mathmlencoding="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;inline&quot;&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mrow&gt;&lt;mi mathvariant=&quot;italic&quot;&gt;T&lt;/mi&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mi mathvariant=&quot;italic&quot;&gt;m&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;/math&gt;" style="vertical-align:-6px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAnCAYAAABjYToLAAAAAXNSR0IArs4c6QAABApJREFUWEftl02IW1UUx//nvpdHpo4oos4QY+7zgYKoqLgQ3bjQSmVqLS7UwS/oOBalOi4E0aLQRdWNRUFBqe1msKDFRbVVsQpWXfgBWrBQlci7dzKNjDMLIU6myeTd49zhPYljal6eKRRJViH33HN+95xz7/mHcIZ+6AzlwgCs18oMMjbIWK8Z6NW+Y49JKS8hokNEdHmvDmN7bYy5TWt9POP+zs+FlHJMCHEQwBdRFO2o1+vfLCws1AC4UspdQojHbEBmfkEptd1+DYLgHGZ+HMCzAD5j5ruUUr/3E4x8398J4EZmHtda/5o4933/XCJ6B8B6+5sxZqPW+tCa9Wlm/iEB7htYHNw636mU+qrdsZTyWiHERwAuZObjzDymtQ4Tm0KhsM7zvN3MvK8dOAvcP3qsUChc7Hnefa7r7iqXy401YFuEEHviMu5rNpuT1Wq13paxPIAdzPx6O3BfwP7FiSelfFUIMRmDPaGUeiVL0DR7Ur/8o6OjF+Tz+QNEdAOAGjOvV0p9nSZIFpvUYL7vX09EhwGczcxHW63WxtnZ2RNZgqbZ0wvYFBG9HN/G3VrrbQCaaYJksUkF5vu+beo3iOiBGGxCa703S8C0e1KBFYvFi1zXPUhE1wD4zRizQWv9fdogWexSgfm+f1PcXzkAh//rq54GNBWYlPIZIYSdBn8bQ2kCZLXpCjYyMnLW0NDQHiK6u9MYyhq4276uYO1Ko9MY6hYg63oasERp2DK+vbS0NDE3N7d4qoDFYvE8x3HuIaKbAVxtjNkaRdHRXC5nVcdWAJ+3Wq3x5eXlRj6ft0/QkwCqURTdUalUfkn8dgNbVRpE9HRcxu1a6+e7ZaFQKJzveZ69xeuY+WEiuj+Kor2O4zxlYQFMMvMWY8ybQog7iWhbPEmOpAJbK3OiKLplZmbm025gQRBcZoz5AMAxAD82m83XjDEn45FWZ+YTRPRSrVYLh4eHp4koaDQaY9VqtZIGzGZrExHtB2CfCaQFS4TmSrZsiTZXKpVvE8m0Iqesr3Gl1MdBEFwaH+CI67qPtquZTrLHaqoHiWgMwK0JVHySMjO/y8w/53K5t9bKotjmr/IbY2zpX7SaUkq5Kpli1fscgFZyAGPMQ/Ek4TQZ61axjuu2+V3X3U9ERQCbwjD8CcCqZLKHZebbtdbfrei25AATVhDYrLY77Nb8PcO1qZDpMAynbGaSkWb7bXFxcXJ+fv6PpH+Z2QFwrzHmSiHEl0qpkzbo6QBbVSEr0mizUuqADeL7/gYies8Y80hSslKpdIXjOB8CeJ+Zy0R0LAzDT+xw6TtYovmJ6Kq2W9axZKVS6Tr7T4yI5o0xU1pr+1SY09ZjPdf+FBv6XsoBWL8y0KufQSn/Nxn7E61A9zfkxLd4AAAAAElFTkSuQmCC" width="19" height="19.5" /></span><span>) to synchronous machine.</span></li></ul><h3  class = 'S8' id = 'TMP_7e99' ><span style=' font-weight: bold;'>Control Structure</span></h3><div  class = 'S5'><span>The following table gives you the information about different units in the controller</span></div><table  class = 'S9'><col style="width: 176.199951171875px;" /><col/><tr  class = 'S10'><td  class = 'S11'><div  class = 'S12'><span style=' font-weight: bold; font-family: monospace;'>Unit</span></div></td><td  class = 'S11'><div  class = 'S12'><span style=' font-weight: bold; font-family: monospace;'>Description</span></div></td></tr><tr  class = 'S13'><td  class = 'S11'><div  class = 'S14'><span style=' font-weight: bold;'>Governer</span></div></td><td  class = 'S11'><div  class = 'S14'><span>Compares speed to reference and uses </span><span style=' font-weight: bold;'>droop</span><span> behavior to compute </span><span style=' font-weight: bold;'>valve or fuel reference</span><span>.</span></div></td></tr><tr  class = 'S13'><td  class = 'S11'><div  class = 'S14'><span style=' font-weight: bold;'>Prime Mover </span></div></td><td  class = 'S11'><div  class = 'S14'><span>Converts energy input to mechanical power using a time constant.</span></div></td></tr></table><h2  class = 'S4' id = 'TMP_2587' ><span>Ports</span></h2><h3  class = 'S8' id = 'TMP_7d71' ><span>Inputs</span></h3><div  class = 'S5'><span>The following table gives you the details about different inputs to the block</span></div><table  class = 'S9'><col/><col/><tr  class = 'S10'><td  class = 'S11'><div  class = 'S12'><span style=' font-weight: bold; font-family: monospace;'>Input</span></div></td><td  class = 'S11'><div  class = 'S12'><span style=' font-weight: bold; font-family: monospace;'>Description</span></div></td></tr><tr  class = 'S13'><td  class = 'S11'><div  class = 'S14'><span style=' font-weight: bold;'>Power reference</span></div></td><td  class = 'S11'><div  class = 'S14'><span>Load reference to the generator</span></div></td></tr><tr  class = 'S13'><td  class = 'S11'><div  class = 'S14'><span style=' font-weight: bold;'>Rotor speed</span></div></td><td  class = 'S11'><div  class = 'S14'><span>Synchronous machine rotor velocity in pu</span></div></td></tr></table><h3  class = 'S8' id = 'TMP_8556' ><span style=' font-weight: bold;'>Outputs</span></h3><div  class = 'S5'><span>The following table gives you the details about different outputs of the block</span></div><table  class = 'S9'><col style="width: 253.33331298828125px;" /><col/><tr  class = 'S13'><td  class = 'S11'><div  class = 'S12'><span style=' font-weight: bold; font-family: monospace;'>Output</span></div></td><td  class = 'S11'><div  class = 'S12'><span style=' font-weight: bold; font-family: monospace;'>Description</span></div></td></tr><tr  class = 'S13'><td  class = 'S11'><div  class = 'S14'><span style=' font-weight: bold;'>Mechanical Output</span></div></td><td  class = 'S11'><div  class = 'S14'><span>Mechanical ports providing torque input to the synchronous generator</span></div></td></tr></table><h2  class = 'S4' id = 'TMP_89f3' ><span>Parameters</span></h2><div  class = 'S5'><span>The following table gives you different parameters of the block</span></div><table  class = 'S9'><col/><col/><tr  class = 'S10'><td  class = 'S11'><div  class = 'S12'><span style=' font-weight: bold; font-family: monospace;'>Parameter</span></div></td><td  class = 'S11'><div  class = 'S12'><span style=' font-weight: bold; font-family: monospace;'>Description</span></div></td></tr><tr  class = 'S13'><td  class = 'S11'><div  class = 'S14'><span style=' font-weight: bold;'>Speed reference</span></div></td><td  class = 'S11'><div  class = 'S14'><span>Machine speed reference in pu</span></div></td></tr><tr  class = 'S13'><td  class = 'S11'><div  class = 'S14'><span style=' font-weight: bold;'>Droop</span></div></td><td  class = 'S11'><div  class = 'S14'><span>Droop co-efficient in %</span></div></td></tr><tr  class = 'S13'><td  class = 'S11'><div  class = 'S14'><span style=' font-weight: bold;'>Torque</span></div></td><td  class = 'S11'><div  class = 'S14'><span>Base and initial torque of the machine</span></div></td></tr></table><div  class = 'S5'><span></span></div><div  class = 'S5'><span>Copyright 2026 The MathWorks, Inc.</span></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Governer and Prime Mover
+%% Overview
+% This block models the *mechanical power control path* for synchronous machines 
+% driven by either :
+%% 
+% * *Steam turbine (non-reheat)*, or
+% * *Diesel engine*.
+%% 
+% It combines :
+%% 
+% * A *governor* that regulates speed/frequency by adjusting energy input (steam 
+% valve or fuel rack).
+% * A *prime mover model* that converts the energy input into mechanical power/torque 
+% using configurable *time constants*.
+%% 
+% *Applications*:
+%% 
+% * Frequency control and primary response.
+% * Microgrid islanding and resynchronization.
+% * Generator dynamic studies for thermal and diesel units.
+%% Detailed Description
+% Block Functionality
+% This block :
+%% 
+% * Compares rotor speed/frequency to reference and computes an energy input 
+% command.
+% * Applies governor droop or isochronous control with PI logic.
+% * Models prime mover dynamics using cascaded first-order lags: 
+% * *Steam turbine*: valve lag + turbine stage lag.
+% * *Diesel engine*: fuel system lag and engine torque lag.
+% * Outputs torque ($T_m$) to synchronous machine.
+% *Control Structure*
+% The following table gives you the information about different units in the 
+% controller
+%% 
+% |*Unit*|
+%% 
+% |*Description*|
+%% 
+% *Governer*
+%% 
+% Compares speed to reference and uses *droop* behavior to compute *valve or 
+% fuel reference*.
+%% 
+% *Prime Mover* 
+%% 
+% Converts energy input to mechanical power using a time constant.
+%% Ports
+% Inputs
+% The following table gives you the details about different inputs to the block
+%% 
+% |*Input*|
+%% 
+% |*Description*|
+%% 
+% *Power reference*
+%% 
+% Load reference to the generator
+%% 
+% *Rotor speed*
+%% 
+% Synchronous machine rotor velocity in pu
+% *Outputs*
+% The following table gives you the details about different outputs of the block
+%% 
+% |*Output*|
+%% 
+% |*Description*|
+%% 
+% *Mechanical Output*
+%% 
+% Mechanical ports providing torque input to the synchronous generator
+%% Parameters
+% The following table gives you different parameters of the block
+%% 
+% |*Parameter*|
+%% 
+% |*Description*|
+%% 
+% *Speed reference*
+%% 
+% Machine speed reference in pu
+%% 
+% *Droop*
+%% 
+% Droop co-efficient in %
+%% 
+% *Torque*
+%% 
+% Base and initial torque of the machine
+%% 
+% 
+% 
+% Copyright 2026 The MathWorks, Inc.
+##### SOURCE END #####
+-->
+</div></body></html>

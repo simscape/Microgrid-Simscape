@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:d="http://www.mathworks.com/blockgraphics" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+	<g id="part_1" title="part_0" ie-ports="left:,top:simulink,right:,bottom:simulink">
+		<rect id="rect" fill="white" x="0" y="0" width="50" height="50" rx="0" ry="0"/>
+		<ellipse id="ellipse" stroke="black" style="stroke: #1171be;" cx="25" cy="25" rx="20" ry="20"/>
+		<path id="path" stroke="black" stroke-linecap="round" style="stroke: #1171be;" d=" M 10,25 C 11.17,22.33 14.3,17 17.5,17 C 20.7,17 23.83,22.17 25,25 C 26.85,29.5 29.67,33 32.5,33 C 35.5,33 38.83,28.33 40,25"/>
+	</g>
+</svg>
