@@ -1,14 +1,14 @@
 # Microgrid Design with Simscape
 
 ## Table of Contents
-- [Overview](#overview) 
+- [Overview](https://viewer.mathworks.com/addons/123865/25.2.1.0/files/Overview/MicrogridDesign.mlx)
 - [Microgrid Components](https://viewer.mathworks.com/addons/123865/25.2.1.0/files/Overview/CustomComponents.html)
-- [Microgrid Design and Control](https://viewer.mathworks.com/addons/123865/25.2.1.0/files/ScriptData/Microgrid%20Control/MicrogridControlParam.m)
-- [Scenario Driven Microgrid Models](#scenario-driven-microgrid-models)
+- [Microgrid Design and Control](https://viewer.mathworks.com/addons/123865/25.2.1.0/files/ScriptData/Microgrid%20Control/MicrogridControlDesign.m)
+- Scenario Driven Microgrid Models
   - [Design, Operation, and Control of Remote Microgrid](https://viewer.mathworks.com/addons/123865/25.2.1.0/files/ScriptData/Remote%20Microgrid/RemoteMicrogridDesign.mlx)
   - [Design of Stable Industrial Microgrid](https://viewer.mathworks.com/addons/123865/25.2.1.0/files/ScriptData/Industrial%20Microgrid/IndustrialMicrogridDesign.mlx)
-  - [Perform Techno-Economic Analysis of Microgrids]([#perform-techno-economic-analysis-of-microgrids](https://viewer.mathworks.com/addons/123865/25.2.1.0/files/ScriptData/Techno%20Economic%20Analysis/TechnoEconomicAnalysis.mlx)
-- [Setup](#setup)  
+  - [Perform Techno-Economic Analysis of Microgrids](https://viewer.mathworks.com/addons/123865/25.2.1.0/files/ScriptData/Techno%20Economic%20Analysis/TechnoEconomicAnalysis.mlx)
+- Setup
 
 ## 🌍 Overview
 The International Council on Large Electric Systems (CIGRE) defines microgrids as 
