@@ -27,7 +27,7 @@ on:
 
 jobs:
   job-Remote-Microgrid-unit-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
 
       - name: Check out repository
@@ -46,12 +46,12 @@ jobs:
             Stateflow
 
       - name: Run tests
-        uses: matlab-actions/run-command@v2
+        uses: matlab-actions/run-command@v3
         with:
           command: 'openProject(pwd); TestRunnerRemoteMicrogrid;'
 
   job-Industrial-Microgrid-unit-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
 
       - name: Check out repository
@@ -70,12 +70,12 @@ jobs:
             Stateflow
 
       - name: Run tests
-        uses: matlab-actions/run-command@v2
+        uses: matlab-actions/run-command@v3
         with:
           command: 'openProject(pwd); TestRunnerIndustrialMicrogrid;'
 
   job-Techno-EconomicAnalysis-unit-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
 
       - name: Check out repository
@@ -94,12 +94,12 @@ jobs:
             Stateflow
 
       - name: Run tests
-        uses: matlab-actions/run-command@v2
+        uses: matlab-actions/run-command@v3
         with:
           command: 'openProject(pwd); TestRunnerTechnoEconomicAnalysis;'
 
   job-Microgrid-Control-unit-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
 
       - name: Check out repository
@@ -118,6 +118,6 @@ jobs:
             Stateflow
 
       - name: Run tests
-        uses: matlab-actions/run-command@v2
+        uses: matlab-actions/run-command@v3
         with:
           command: 'openProject(pwd); TestRunnerMicrogridControl;'
