@@ -27,7 +27,7 @@ on:
 
 jobs:
   job-Remote-Microgrid-unit-tests:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
 
       - name: Check out repository
@@ -36,7 +36,7 @@ jobs:
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v3
         with:
-          release: R2025b
+          release: R2025bu5
           cache: true
           products: |
             Simulink
@@ -51,7 +51,7 @@ jobs:
           command: 'openProject(pwd); TestRunnerRemoteMicrogrid;'
 
   job-Industrial-Microgrid-unit-tests:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
 
       - name: Check out repository
@@ -60,7 +60,7 @@ jobs:
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v3
         with:
-          release: R2025b
+          release: R2025bu5
           cache: true
           products: |
             Simulink
@@ -75,7 +75,7 @@ jobs:
           command: 'openProject(pwd); TestRunnerIndustrialMicrogrid;'
 
   job-Techno-EconomicAnalysis-unit-tests:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
 
       - name: Check out repository
@@ -84,7 +84,7 @@ jobs:
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v3
         with:
-          release: R2025b
+          release: R2025bu5
           cache: true
           products: |
             Simulink
@@ -99,7 +99,7 @@ jobs:
           command: 'openProject(pwd); TestRunnerTechnoEconomicAnalysis;'
 
   job-Microgrid-Control-unit-tests:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
 
       - name: Check out repository
@@ -108,7 +108,7 @@ jobs:
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v3
         with:
-          release: R2025b
+          release: R2025bu5
           cache: true
           products: |
             Simulink
